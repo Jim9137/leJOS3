@@ -20,11 +20,19 @@ public class Vemputin extends RobotParts{
 	 */
 	public void vemputavahasen() {
 		super.getDualBlades().setSpeed(360);
+		super.getDualBlades().forward();
 	}
 	/*
-	 * Metodi lopettaa vemputuksen
+	 * Metodi lopettaa vemputuksen.
 	 */
 	public void lopetavemputus() {
 		super.getDualBlades().stop(true);
+	}
+	/*
+	 * Metodi aloittaa vemputuksen tietyllä nopeudella.
+	 */
+	public void vemputa(int nopeus) {
+		super.getDualBlades().setSpeed(nopeus);
+		super.getDualBlades().forward();
 	}
 }

@@ -18,7 +18,7 @@ public class Lyonti extends RobotParts {
 	
 	public Lyonti() {
 		super.getLightSaber().setSpeed(740);
-		super.getLightSaber().flt();
+		super.getLightSaber().flt(true);
 	}
 
 		

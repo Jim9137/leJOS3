@@ -9,21 +9,21 @@ import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
 import lejos.robotics.RegulatedMotor;
 
-public class Legoliikkeetvade extends Thread {
+public class Legoliikkeetvade extends RobotParts {
 	private EV3IRSensor infraredSensor;
 
-	public Legoliikkeetvade(EV3IRSensor sensor) {
-		this.infraredSensor = sensor;
+	public Legoliikkeetvade() {
+		this.infraredSensor = super.getRemoteController();
 	}
 
 	public void run() {
 
-		RegulatedMotor m1 = new EV3LargeRegulatedMotor(MotorPort.A);
+		RegulatedMotor m1 = super.getLargeMotor1();
 		m1.setSpeed(740);
-		RegulatedMotor m2 = new EV3LargeRegulatedMotor(MotorPort.B);
+		RegulatedMotor m2 = super.getLargeMotor2();
 		m2.setSpeed(740);
-		RegulatedMotor m3 = new EV3LargeRegulatedMotor(MotorPort.C);
-		RegulatedMotor m4 = new EV3MediumRegulatedMotor(MotorPort.D);
+		RegulatedMotor m3 = super.getDualBlades();
+		RegulatedMotor m4 = super.getLightSaber();
 		while (Button.ESCAPE.isUp()) {
 			final int remoteCommand = infraredSensor.getRemoteCommand(2);
 			switch (remoteCommand) {
@@ -103,8 +103,7 @@ public class Legoliikkeetvade extends Thread {
 	}
 
 	public static void main(String[] args) {
-		EV3IRSensor irSensor = new EV3IRSensor(SensorPort.S1);
-		Legoliikkeetvade checkerThread = new Legoliikkeetvade(irSensor);
+		Legoliikkeetvade checkerThread = new Legoliikkeetvade();
 		checkerThread.start();
 		LCD.drawString("Lord VadeG", 0, 1);
 	}

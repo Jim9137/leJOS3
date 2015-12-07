@@ -1,60 +1,71 @@
 package legorobotti;
 
+import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.Motor;
 
-public class Liike {
+	/**
+	 * Moottorien liikkeiden toiminnallisuus
+	 * 
+	 * @author pasi_lite
+	 *
+	 */
+
+public class Liike extends RobotParts {
+	private EV3LargeRegulatedMotor oikeaMoottori = super.getLargeMotor1();
+	private EV3LargeRegulatedMotor vasenMoottori = super.getLargeMotor2();
+	
 	
 	public void eteen() {
-		Motor.A.setSpeed(740);
-		Motor.B.setSpeed(740);
-		Motor.A.forward();
-		Motor.B.forward();
+		oikeaMoottori.setSpeed(740);
+		vasenMoottori.setSpeed(740);
+		oikeaMoottori.forward();
+		vasenMoottori.forward();
 	}
 	public void taakse() {
-		Motor.A.setSpeed(740);
-		Motor.B.setSpeed(740);
-		Motor.A.backward();
-		Motor.B.backward();
+		oikeaMoottori.setSpeed(740);
+		vasenMoottori.setSpeed(740);
+		oikeaMoottori.backward();
+		vasenMoottori.backward();
 	}
 	public void oikliike() {
-		Motor.A.setSpeed(360);
-		Motor.B.setSpeed(740);
-		Motor.A.forward();
-		Motor.B.forward();
+		oikeaMoottori.setSpeed(360);
+		vasenMoottori.setSpeed(740);
+		oikeaMoottori.forward();
+		vasenMoottori.forward();
 	}
 	public void vasliike() {
-		Motor.A.setSpeed(740);
-		Motor.B.setSpeed(360);
-		Motor.A.forward();
-		Motor.B.forward();
+		oikeaMoottori.setSpeed(740);
+		vasenMoottori.setSpeed(360);
+		oikeaMoottori.forward();
+		vasenMoottori.forward();
 	}
 	public void oikpaik() {
-		Motor.A.setSpeed(740);
-		Motor.B.setSpeed(740);
-		Motor.A.backward();
-		Motor.B.forward();
+		oikeaMoottori.setSpeed(740);
+		vasenMoottori.setSpeed(740);
+		oikeaMoottori.backward();
+		vasenMoottori.forward();
 	}
 	public void vaspaik() {
-		Motor.A.setSpeed(740);
-		Motor.B.setSpeed(740);
-		Motor.A.forward();
-		Motor.B.backward();
+		oikeaMoottori.setSpeed(740);
+		vasenMoottori.setSpeed(740);
+		oikeaMoottori.forward();
+		vasenMoottori.backward();
 	}
 	public void taakseoik() {
-		Motor.A.setSpeed(360);
-		Motor.B.setSpeed(740);
-		Motor.A.backward();
-		Motor.B.backward();
+		oikeaMoottori.setSpeed(360);
+		vasenMoottori.setSpeed(740);
+		oikeaMoottori.backward();
+		vasenMoottori.backward();
 	}
 	
 	public void taaksevas() {
-		Motor.A.setSpeed(740);
-		Motor.B.setSpeed(360);
-		Motor.A.backward();
-		Motor.B.backward();
+		oikeaMoottori.setSpeed(740);
+		vasenMoottori.setSpeed(360);
+		oikeaMoottori.backward();
+		vasenMoottori.backward();
 	}
 	public void seis() {
-		Motor.A.stop(true);
-		Motor.B.stop(true);
+		oikeaMoottori.stop(true);
+		vasenMoottori.stop(true);
 	}
 }

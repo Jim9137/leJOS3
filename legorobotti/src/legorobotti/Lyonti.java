@@ -11,7 +11,16 @@ import lejos.hardware.*;
 
 public class Lyonti extends RobotParts {
 
-	private int kasky;
+	
+	/**
+	 * Luokan konstruktori
+	 */
+	
+	public Lyonti() {
+		super.getLightSaber().setSpeed(740);
+		super.getLightSaber().flt();
+	}
+
 		
 	/**
 	 * Normaali lyönti, joka kiertää moottoria 90 astetta ja palaa 90 astetta takaisinpäin
@@ -19,12 +28,13 @@ public class Lyonti extends RobotParts {
 	
 	public void lyonti() {
 		
+
 		super.getLightSaber().rotateTo(90);
 		super.getLightSaber().rotateTo(0);
 	}
 	
 	/**
-	 * Lyöntiliike, joka jää alas 90 asteeseen ja uudelleen kutsuttaessa nousee ylös 90 astetta
+	 * Lyöntiliike, joka jää alas 90 asteeseen ja uudelleen kutsuttaessa nousee takaisin 90 astetta
 	 */
 	
 	public void alhaalla() {

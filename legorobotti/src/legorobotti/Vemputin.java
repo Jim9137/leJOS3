@@ -26,6 +26,7 @@ public class Vemputin implements Liikkeet {
 	 * Metodi lopettaa vemputuksen.
 	 */
 	public void lopetavemputus() {
+		RobotParts.getDualBlades().setSpeed(0);
 		RobotParts.getDualBlades().stop(true);
 	}
 	/*
@@ -45,7 +46,7 @@ public class Vemputin implements Liikkeet {
 		if (RobotParts.getDualBlades().getSpeed() == 0) {
 			vemputalujaa();
 		} else {
-			RobotParts.getDualBlades().stop(true);
+			lopetavemputus();
 		}
 	}
 	

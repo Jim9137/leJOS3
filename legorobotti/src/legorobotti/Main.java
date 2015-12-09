@@ -2,84 +2,55 @@ package legorobotti;
 
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
+import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
 import lejos.robotics.RegulatedMotor;
 
-public class Legoliikkeetvade extends Thread {
-	private IRsensori  irsensori = new IRsensori();
+public class Main extends Thread {
+	private EV3IRSensor  irsensori = new EV3IRSensor(SensorPort.S1);
 	private Vemputin vemputin = new Vemputin();
 	private Laskuri laskuri = new Laskuri();
-	//private Lyonti lyonti = new Lyonti();
-	//private Liike liike = new Liike();
+	private Lyonti lyonti = new Lyonti();
+	private Liike liike = new Liike();
 	
-	public Legoliikkeetvade() {
+	public Main() {
 		//this.irsensori = IRsensori.getRemoteController();
 	}
 
 	public void run() {
 
-		RegulatedMotor m1 = super.getLargeMotor1();
-		m1.setSpeed(740);
-		RegulatedMotor m2 = super.getLargeMotor2();
-		m2.setSpeed(740);
-		RegulatedMotor m3 = super.getDualBlades();
-		RegulatedMotor m4 = super.getLightSaber();
 		while (Button.ESCAPE.isUp()) {
-			final int remoteCommand = infraredSensor.getRemoteCommand(2);
+			final int remoteCommand = irsensori.getRemoteCommand(2);
 			switch (remoteCommand) {
 			case 2:
-				m1.setSpeed(740);
-				m2.setSpeed(740);
-				m1.forward();
-				m2.forward();
+				liike.eteen();
 				break;
 			case 4:
-				m1.setSpeed(600);
-				m2.setSpeed(600);
-				m1.backward();
-				m2.backward();
+				liike.taakse();
 				break;
 			case 3:
-				m1.forward();
-				m1.setSpeed(360);
-				m2.setSpeed(740);
-				m2.forward();
+				liike.taakseoik();
 				break;
 			case 1:
-				m2.setSpeed(360);
-				m2.forward();
-				m1.forward();
-				m1.setSpeed(740);
+				liike.taaksevas();
 				break;
 			case 9:
-				m1.flt(true);
-				m2.flt(true);
+				liike.seis();
 				break;
 			}
-			final int remoteCommand2 = infraredSensor.getRemoteCommand(3);
+			final int remoteCommand2 = irsensori.getRemoteCommand(3);
 			switch (remoteCommand2) {
 			case 3:
-				m1.setSpeed(740);
-				m2.setSpeed(740);
-				m1.forward();
-				m2.backward();
+				liike.oikpaik();
 				break;
 			case 1:
-				m1.setSpeed(740);
-				m2.setSpeed(740);
-				m1.backward();
-				m2.forward();
+				liike.vaspaik();
 				break;
 			case 2:
-				m3.setSpeed(740);
-				m3.forward();
-				Button.LEDPattern(8);
+				vemputin.vemputalujaa();
 				break;
 			case 4:
-				Button.LEDPattern(5);
-				m4.setSpeed(740);
-				m4.rotateTo(90);
-				m4.rotateTo(0);
+				lyonti
 				// m4.rotateTo(360);
 				// m4.rotateTo(400);
 				// m4.rotateTo(360);
@@ -103,7 +74,7 @@ public class Legoliikkeetvade extends Thread {
 	}
 
 	public static void main(String[] args) {
-		Legoliikkeetvade checkerThread = new Legoliikkeetvade();
+		Main checkerThread = new Main();
 		checkerThread.start();
 		LCD.drawString("Lord VadeG", 0, 1);
 	}

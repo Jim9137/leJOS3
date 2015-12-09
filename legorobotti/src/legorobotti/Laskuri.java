@@ -2,8 +2,6 @@ package legorobotti;
 
 import java.io.IOException;
 
-import lejos.hardware.ev3.LocalEV3;
-
 /**
  * Luokka laskee tiettyjä ominaisuuksia MÄÄRITTELE
  * Sanoo auki jokainen wav. 0-9, mahdollisesti yksikköä (ajattele junan kuuluttaja)
@@ -41,28 +39,28 @@ public class Laskuri {
 	 */
 	
 	public int returnVelocity() {
-		return (RobotParts.getLargeMotor1().getSpeed()+super.getLargeMotor2().getSpeed())/2;	
+		return (RobotParts.getLargeMotor1().getSpeed()+RobotParts.getLargeMotor2().getSpeed())/2;	
 		}
 	
 	/**
 	 * Palauttaa moottoreiden kiihtyvyyden keskiarvon metriä per sekuntia toiseen
-	 * @return (super.getLargeMotor1().getAcceleration()+super.getAcceleration().getSpeed())/2;	
+	 * @return (RobotParts.getLargeMotor1().getAcceleration()+RobotParts.getAcceleration().getSpeed())/2;	
 	 */
 	
 	public int returnAcceleration() {
-		return (super.getLargeMotor1().getAcceleration()+super.getLargeMotor2().getAcceleration())/2;	
+		return (RobotParts.getLargeMotor1().getAcceleration()+RobotParts.getLargeMotor2().getAcceleration())/2;	
 	}
 	
 	/**
 	 * Palauttaa moottoreiden kiihtyvyyden keskiarvon metriä per sekuntia toiseen
-	 * @return (super.getLargeMotor1().getTachoCount()+super.getLargeMotor2().getTachoCount())/2;
+	 * @return (RobotParts.getLargeMotor1().getTachoCount()+RobotParts.getLargeMotor2().getTachoCount())/2;
 	 */
 	public int returnTacho() {
-		return (super.getLargeMotor1().getTachoCount()+super.getLargeMotor2().getTachoCount())/2;
+		return (RobotParts.getLargeMotor1().getTachoCount()+RobotParts.getLargeMotor2().getTachoCount())/2;
 	}
 	
 	public void close() throws IOException {
-		super.closeDevice(super.getLargeMotor1());
+		RobotParts.closeDevice(RobotParts.getLargeMotor1());
 	}
 
 }

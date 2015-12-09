@@ -1,7 +1,5 @@
 package legorobotti;
 
-import java.io.IOException;
-
 /**
  * Luokka laskee tiettyjä ominaisuuksia MÄÄRITTELE
  * Sanoo auki jokainen wav. 0-9, mahdollisesti yksikköä (ajattele junan kuuluttaja)
@@ -59,8 +57,6 @@ public class Laskuri {
 		return (RobotParts.getLargeMotor1().getTachoCount()+RobotParts.getLargeMotor2().getTachoCount())/2;
 	}
 	
-	public void close() throws IOException {
-		RobotParts.closeDevice(RobotParts.getLargeMotor1());
-	}
+
 
 }

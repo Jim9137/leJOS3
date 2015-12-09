@@ -1,5 +1,8 @@
 package legorobotti;
 
+import java.io.Closeable;
+import java.io.IOException;
+
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
@@ -7,7 +10,7 @@ import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
 
-public class RobotParts extends Thread {
+public class RobotParts {
 	final private static EV3LargeRegulatedMotor largeMotor1 = new EV3LargeRegulatedMotor(MotorPort.A);
 	final private static EV3LargeRegulatedMotor largeMotor2 = new EV3LargeRegulatedMotor(MotorPort.B);
 	
@@ -22,39 +25,47 @@ public class RobotParts extends Thread {
 	/**
 	 * @return the largeMotor1
 	 */
-	protected synchronized EV3LargeRegulatedMotor getLargeMotor1() {
+	protected synchronized static EV3LargeRegulatedMotor getLargeMotor1() {
 		return largeMotor1;
 	}
 	
 	/**
 	 * @return the largeMotor2
 	 */
-	protected synchronized EV3LargeRegulatedMotor getLargeMotor2() {
+	protected synchronized static EV3LargeRegulatedMotor getLargeMotor2() {
 		return largeMotor2;
 	}
 	/**
 	 * @return the dualBlades
 	 */
-	protected synchronized EV3LargeRegulatedMotor getDualBlades() {
+	protected synchronized static EV3LargeRegulatedMotor getDualBlades() {
 		return dualBlades;
 	}
 	/**
 	 * @return the lightSaber
 	 */
-	protected synchronized EV3MediumRegulatedMotor getLightSaber() {
+	protected synchronized static EV3MediumRegulatedMotor getLightSaber() {
 		return lightSaber;
 	}
 	/**
 	 * @return the remoteController
 	 */
-	protected synchronized EV3IRSensor getRemoteController() {
+	protected synchronized static EV3IRSensor getRemoteController() {
 		return remoteController;
 	}
 	/**
 	 * @return the touchSensor
 	 */
-	protected synchronized EV3TouchSensor getTouchSensor() {
+	protected synchronized static EV3TouchSensor getTouchSensor() {
 		return touchSensor;
 	}
 
+	/**
+	 * Close selected device
+	 * @param device - the device to close
+	 * @throws IOException - if some sort of IO error occurs
+	 */
+	protected synchronized static void closeDevice(Closeable device) throws IOException {
+		device.close();
+	}
 }

@@ -1,7 +1,6 @@
 package legorobotti;
 
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
-import lejos.hardware.motor.Motor;
 
 	/**
 	 * Moottorien liikkeiden toiminnallisuus
@@ -10,9 +9,10 @@ import lejos.hardware.motor.Motor;
 	 *
 	 */
 
-public class Liike extends RobotParts {
-	private EV3LargeRegulatedMotor oikeaMoottori = super.getLargeMotor1();
-	private EV3LargeRegulatedMotor vasenMoottori = super.getLargeMotor2();
+public class Liike {
+	
+	private static EV3LargeRegulatedMotor oikeaMoottori = RobotParts.getLargeMotor1();
+	private static EV3LargeRegulatedMotor vasenMoottori = RobotParts.getLargeMotor2();
 	
 	
 	public void eteen() {

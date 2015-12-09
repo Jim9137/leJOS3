@@ -1,11 +1,13 @@
 package legorobotti;
 
+import java.io.IOException;
+
 import lejos.hardware.ev3.LocalEV3;
 
 /**
  * Luokka laskee tiettyjä ominaisuuksia MÄÄRITTELE
  * Sanoo auki jokainen wav. 0-9, mahdollisesti yksikköä (ajattele junan kuuluttaja)
- * Laskee vaikka 10 sekunnin välein ja ilmoittaa oman elämänsä
+ * Laskee vaikka 10 sekunnin välein ja ilmoittaa oman elämänsäl
  * Jos sensoreita irtoaa tarkistaa nopeuden ja toteaa tilansa
  * ilmoittaa jos sensori ei ole kiinni
  * Analogiset jos irtoaa ABCD
@@ -31,7 +33,7 @@ import lejos.hardware.ev3.LocalEV3;
  *
  */
 
-public class laskuri extends RobotParts {
+public class Laskuri {
 	
 	/**
 	 *  Palauttaa telaketjujen nopeuden keskiarvon intinnä (asteita per sekunti)
@@ -39,7 +41,7 @@ public class laskuri extends RobotParts {
 	 */
 	
 	public int returnVelocity() {
-		return (super.getLargeMotor1().getSpeed()+super.getLargeMotor2().getSpeed())/2;	
+		return (RobotParts.getLargeMotor1().getSpeed()+super.getLargeMotor2().getSpeed())/2;	
 		}
 	
 	/**
@@ -57,6 +59,10 @@ public class laskuri extends RobotParts {
 	 */
 	public int returnTacho() {
 		return (super.getLargeMotor1().getTachoCount()+super.getLargeMotor2().getTachoCount())/2;
+	}
+	
+	public void close() throws IOException {
+		super.closeDevice(super.getLargeMotor1());
 	}
 
 }

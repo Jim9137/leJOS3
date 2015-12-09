@@ -6,33 +6,51 @@ package legorobotti;
  * @author Vade
  *
  */
-public class Vemputin extends RobotParts{
+public class Vemputin implements Liikkeet {
 	
 	/*
 	 *Metodi aloittaa vemputuksen maksimi nopeudella
 	 */
 	public void vemputalujaa() {
-		super.getDualBlades().setSpeed(740);
-		super.getDualBlades().forward();
+		RobotParts.getDualBlades().setSpeed(740);
+		RobotParts.getDualBlades().forward();
 	}
 	/*
 	 * Metodi aloittaa vemputuksen hiljaisella nopeudella
 	 */
 	public void vemputavahasen() {
-		super.getDualBlades().setSpeed(360);
-		super.getDualBlades().forward();
+		RobotParts.getDualBlades().setSpeed(360);
+		RobotParts.getDualBlades().forward();
 	}
 	/*
 	 * Metodi lopettaa vemputuksen.
 	 */
 	public void lopetavemputus() {
-		super.getDualBlades().stop(true);
+		RobotParts.getDualBlades().setSpeed(0);
+		RobotParts.getDualBlades().stop(true);
 	}
 	/*
 	 * Metodi aloittaa vemputuksen tietyllä nopeudella.
 	 */
 	public void vemputa(int nopeus) {
-		super.getDualBlades().setSpeed(nopeus);
-		super.getDualBlades().forward();
+		RobotParts.getDualBlades().setSpeed(nopeus);
+		RobotParts.getDualBlades().forward();
+	}
+	
+	/**
+	 * Metodi aloittaa ja lopettaa vemputuksen
+	 * @author Henri
+	 */
+	
+	public void aloitajalopetavemputus() {
+		if (RobotParts.getDualBlades().getSpeed() == 0) {
+			vemputalujaa();
+		} else {
+			lopetavemputus();
+		}
+	}
+	
+	public void close() {
+		RobotParts.closeDevice(RobotParts.getDualBlades());
 	}
 }

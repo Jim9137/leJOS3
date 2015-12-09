@@ -7,7 +7,7 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.SensorPort;
-import lejos.hardware.sensor.EV3IRSensor;
+//import lejos.hardware.sensor.EV3IRSensor;
 import lejos.hardware.sensor.EV3TouchSensor;
 
 public class RobotParts {
@@ -18,7 +18,7 @@ public class RobotParts {
 	
 	final private static EV3MediumRegulatedMotor lightSaber = new EV3MediumRegulatedMotor(MotorPort.D);
 	
-	final private static EV3IRSensor remoteController = new EV3IRSensor(SensorPort.S1);
+	//final private static EV3IRSensor remoteController = new EV3IRSensor(SensorPort.S1);
 	final private static EV3TouchSensor touchSensor = new EV3TouchSensor(SensorPort.S2);
 
 	
@@ -47,12 +47,12 @@ public class RobotParts {
 	protected synchronized static EV3MediumRegulatedMotor getLightSaber() {
 		return lightSaber;
 	}
-	/**
-	 * @return the remoteController
-	 */
-	protected synchronized static EV3IRSensor getRemoteController() {
-		return remoteController;
-	}
+//	/**
+//	 * @return the remoteController
+//	 */
+//	protected synchronized static EV3IRSensor getRemoteController() {
+//		return remoteController;
+//	}
 	/**
 	 * @return the touchSensor
 	 */
@@ -65,7 +65,12 @@ public class RobotParts {
 	 * @param device - the device to close
 	 * @throws IOException - if some sort of IO error occurs
 	 */
-	protected synchronized static void closeDevice(Closeable device) throws IOException {
-		device.close();
+	protected synchronized static void closeDevice(Closeable device) {
+		try {
+			device.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

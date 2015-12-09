@@ -8,7 +8,7 @@ package legorobotti;
  * 
  */
 
-public class Lyonti {
+public class Lyonti implements Liikkeet {
 
 	/**
 	 * Normaali lyönti, joka kiertää moottoria 90 astetta ja palaa 90 astetta takaisinpäin
@@ -35,6 +35,10 @@ public class Lyonti {
 			RobotParts.getLightSaber().rotateTo(0);
 		}
 
+	}
+	
+	public void close() {
+		RobotParts.closeDevice(RobotParts.getLightSaber());
 	}
 	
 }

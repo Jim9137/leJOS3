@@ -76,7 +76,7 @@ public class Main extends Thread {
 			 * K‰ynnist‰‰ vemputtimen
 			 */
 			case 2:
-				vemputin.vemputalujaa();
+				vemputin.aloitajalopetavemputus();
 				Button.LEDPattern(8);
 				break;
 			/*

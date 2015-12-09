@@ -25,7 +25,7 @@ public class Vemputin implements Liikkeet {
 	/*
 	 * Metodi lopettaa vemputuksen.
 	 */
-	public void aloitalopetavemputus() {
+	public void lopetavemputus() {
 		RobotParts.getDualBlades().stop(true);
 	}
 	/*

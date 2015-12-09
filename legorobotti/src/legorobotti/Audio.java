@@ -38,7 +38,8 @@ public void playMusic(String kappale){
 	LCD.clear();
 	LCD.drawString(String.valueOf(test), 0, 0);
 	Delay.msDelay(500);
-	
+	Thread t = Thread.currentThread();
+	t.notifyAll();
 	/**
 	 * plays chosen sound file
 	 */

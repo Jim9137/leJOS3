@@ -1,7 +1,6 @@
 package legorobotti;
 
 import lejos.hardware.Button;
-import lejos.hardware.ev3.LocalEV3;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
@@ -21,42 +20,81 @@ public class Main extends Thread {
 		while (Button.ESCAPE.isUp()) {
 			final int remoteCommand = irsensori.getRemoteCommand(2);
 			switch (remoteCommand) {
-			case 2:
+			/*
+			 * Robotti liikkuu suoraan eteenp‰in
+			 */
+			case 5:
 				liike.eteen();
+				Button.LEDPattern(1);
 				break;
-			case 4:
+			/*
+			 * Robotti liikkuu suoraan taaksep‰in
+			 */
+			case 8:
 				liike.taakse();
+				Button.LEDPattern(2);
 				break;
+			/*
+			 * K‰‰ntyy liikkeest‰ oikealle
+			 */
 			case 3:
-				liike.taakseoik();
+				liike.oikliike();
+				Button.LEDPattern(4);
 				break;
+			/*
+			 * K‰‰ntyy liikkeest‰ vasemmalle
+			 */
 			case 1:
-				liike.taaksevas();
-				break;
-			case 9:
-				liike.seis();
-				break;
-			}
-			final int remoteCommand2 = irsensori.getRemoteCommand(3);
-			switch (remoteCommand2) {
-			case 3:
-				liike.oikpaik();
-				break;
-			case 1:
+				liike.vasliike();
+				Button.LEDPattern(4);
+				break; 
+			/*
+			 * K‰‰ntyy paikallaan vasemmalle
+			 */
+			case 10:
 				liike.vaspaik();
 				break;
+			/*
+			 * K‰‰ntyy paikallaan oikealle
+			 */
+			case 7:
+				liike.oikpaik();
+				break;
+			/*
+			 * K‰‰ntyy vasemmalle taakse
+			 */
+			case 6:
+				liike.taaksevas();
+				break;
+			/*
+			 * K‰‰ntyy oikealle taakse
+			 */
+			case 11:
+				liike.taakseoik();
+				break;
+			/*
+			 * K‰ynnist‰‰ vemputtimen
+			 */
 			case 2:
 				vemputin.vemputalujaa();
+				Button.LEDPattern(8);
 				break;
+			/*
+			 * Suorittaa Lyˆntiliikkeen
+			 */
 			case 4:
-				lyonti.lyonti();
+				Button.LEDPattern(5);
+				lyonti.alhaalla();
 				break;
+			/*
+			 * Pys‰ytt‰‰ kaikki moottorit ja sammuttaa ledit.
+			 */
 			case 9:
 				liike.seis();
-				lyonti.alhaalla();
 				vemputin.lopetavemputus();
 				Button.LEDPattern(0);
 				break;
+
 			}
 
 		}

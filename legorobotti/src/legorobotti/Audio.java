@@ -3,6 +3,7 @@ package legorobotti;
 import java.io.File;
 
 import lejos.hardware.*;
+import lejos.hardware.lcd.LCD;
 import lejos.utility.Delay;
 
 public class Audio {
@@ -22,16 +23,18 @@ public class Audio {
 	
 	
 public void playMusic() {
-	final File soundFile = new File("The Imperial March.wav");
-	Sound.playSample(soundFile, 100);
-	Delay.msDelay(500);
+//	final File soundFile = new File("The Imperial March.wav");
+//	Sound.playSample(soundFile);
+//	Delay.msDelay(500);
 	/**
 	 * Defines audio files
 	 */
 }
 public void playMusic(String kappale){
 	final File soundFile = new File(kappale);
-	Sound.playSample(soundFile, 100);
+	int test= Sound.playSample(soundFile, 100);
+	LCD.clear();
+	LCD.drawString(String.valueOf(test), 0, 0);
 	Delay.msDelay(500);
 	/**
 	 * plays chosen sound file

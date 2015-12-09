@@ -1,6 +1,8 @@
 package legorobotti;
 
 import lejos.hardware.Button;
+import lejos.hardware.Sound;
+import lejos.hardware.Sounds;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
@@ -11,12 +13,12 @@ public class Main extends Thread {
 	//private Laskuri laskuri = new Laskuri();
 	private Lyonti lyonti = new Lyonti();
 	private Liike liike = new Liike();
-	
+	private Audio audio = new Audio();
 	public Main() {
 				
 	}
 	public void run() {
-
+		Sound.setVolume(Sounds.VOL_MAX);
 		while (Button.ESCAPE.isUp()) {
 			final int remoteCommand = irsensori.getRemoteCommand(2);
 			switch (remoteCommand) {
@@ -85,6 +87,7 @@ public class Main extends Thread {
 			case 4:
 				Button.LEDPattern(5);
 				lyonti.alhaalla();
+				audio.playClip(Audio.SABERSW);
 				break;
 			/*
 			 * Pys‰ytt‰‰ kaikki moottorit ja sammuttaa ledit.
@@ -93,6 +96,7 @@ public class Main extends Thread {
 				liike.seis();
 				vemputin.lopetavemputus();
 				Button.LEDPattern(0);
+				audio.playMusic();
 				break;
 
 			}

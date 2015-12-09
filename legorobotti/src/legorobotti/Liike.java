@@ -9,7 +9,7 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 	 *
 	 */
 
-public class Liike {
+public class Liike implements Liikkeet {
 	
 	private static EV3LargeRegulatedMotor oikeaMoottori = RobotParts.getLargeMotor1();
 	private static EV3LargeRegulatedMotor vasenMoottori = RobotParts.getLargeMotor2();
@@ -67,5 +67,9 @@ public class Liike {
 	public void seis() {
 		oikeaMoottori.stop(true);
 		vasenMoottori.stop(true);
+	}
+	public void close() {
+		RobotParts.closeDevice(RobotParts.getLargeMotor1());
+		RobotParts.closeDevice(RobotParts.getLargeMotor2());
 	}
 }

@@ -1,15 +1,23 @@
-//package legorobotti;
-//
-//public class Kosketus {
-//	
-//	import lejos.hardware.port.SensorPort;
-//	import lejos.hardware.sensor.AnalogSensor;
-//
-//	public class EV3TouchSensor extends AnalogSensor
-//
-//		Sensor ts = new Sensor(SensorPort.S1);
-//		
-//		public void EV3TouchSensor(
-//		public void getTouchMode()
-//		public boolean isPressed()
-//}
+package legorobotti;
+import lejos.hardware.*;
+
+
+
+
+public class Kosketus {
+	
+	
+	float[] sample = new float[RobotParts.getTouchSensor().sampleSize()];
+	
+	
+	public void touch() {
+		
+		if (RobotParts.getTouchSensor().sampleSize() == 1) {
+			RobotParts.getLargeMotor1().stop();
+			RobotParts.getLargeMotor2().stop();
+		} else {
+			
+		}
+	}
+}
+

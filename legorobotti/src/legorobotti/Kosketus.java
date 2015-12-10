@@ -3,8 +3,9 @@ import lejos.hardware.*;
 import lejos.utility.Delay;
 
 /**
- * T‰ss‰ classissa m‰‰ritell‰‰n mit‰ kosketussensorin metodi
- * Pyst‰ytt‰‰ moottorit, kun kosketussensori on painettu pohjaan
+ * T‰ss‰ classissa m‰‰ritell‰‰n kosketussensorin metodi
+ * Kun kosketussensori on painettu pohjaan, laite peruuttaa hieman
+ * jonka j‰lkeen pys‰htyy ja on j‰lleen valmiina toimimaan
  * @author Henri
  *
  */

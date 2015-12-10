@@ -13,7 +13,7 @@ public class Main extends Thread {
 	//private Laskuri laskuri = new Laskuri();
 	private Lyonti lyonti = new Lyonti();
 	private Liike liike = new Liike();
-	private Audio audio = new Audio();
+	private Audio musa = new Audio();
 	public Main() {
 				
 	}
@@ -80,7 +80,6 @@ public class Main extends Thread {
 			case 2:
 				vemputin.aloitajalopetavemputus();
 				Button.LEDPattern(8);
-//				audio.playMusic(Audio.SABERD);
 				break;
 			/*
 			 * Suorittaa Lyöntiliikkeen
@@ -88,7 +87,6 @@ public class Main extends Thread {
 			case 4:
 				Button.LEDPattern(5);
 				lyonti.alhaalla();
-//				audio.playMusic(Audio.SABERSW);
 				break;
 			/*
 			 * Pysäyttää kaikki moottorit ja sammuttaa ledit.
@@ -97,7 +95,6 @@ public class Main extends Thread {
 				liike.seis();
 				vemputin.lopetavemputus();
 				Button.LEDPattern(0);
-//				audio.playMusic(Audio.MARCH);
 				break;
 
 			}
@@ -113,6 +110,7 @@ public class Main extends Thread {
 		Main checkerThread = new Main();
 		checkerThread.start();
 		LCD.drawString("Lord VadeG", 0, 1);
+		
 	}
 
 }

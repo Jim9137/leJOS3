@@ -13,12 +13,13 @@ public class Main extends Thread {
 	//private Laskuri laskuri = new Laskuri();
 	private Lyonti lyonti = new Lyonti();
 	private Liike liike = new Liike();
-	private Audio audio = new Audio();
+	private AudioThread audio = new AudioThread();
 	public Main() {
 				
 	}
 	public void run() {
 		Sound.setVolume(Sounds.VOL_MAX);
+		audio.start();
 		while (Button.ESCAPE.isUp()) {
 			final int remoteCommand = irsensori.getRemoteCommand(2);
 			switch (remoteCommand) {

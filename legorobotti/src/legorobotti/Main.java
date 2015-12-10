@@ -114,6 +114,7 @@ public class Main extends Thread {
 		Main checkerThread = new Main();
 		checkerThread.start();
 		LCD.drawString("Lord VadeG", 0, 1);
+		
 	}
 
 }

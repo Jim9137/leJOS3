@@ -1,7 +1,12 @@
 package legorobotti;
 import lejos.hardware.*;
 
-
+/**
+ * T‰ss‰ classissa m‰‰ritell‰‰n mit‰ kosketussensorin metodi
+ * Pyst‰ytt‰‰ moottorit, kun kosketussensori on painettu pohjaan
+ * @author Henri
+ *
+ */
 
 
 public class Kosketus {

@@ -14,6 +14,7 @@ public class Main extends Thread {
 	private Lyonti lyonti = new Lyonti();
 	private Liike liike = new Liike();
 	private AudioThread audio = new AudioThread();
+	private Kosketus kosketus = new Kosketus();
 	public Main() {
 				
 	}
@@ -21,6 +22,7 @@ public class Main extends Thread {
 		Sound.setVolume(Sounds.VOL_MAX);
 		audio.start();
 		while (Button.ESCAPE.isUp()) {
+			kosketus.touch();
 			final int remoteCommand = irsensori.getRemoteCommand(2);
 			switch (remoteCommand) {
 			/*

@@ -19,7 +19,7 @@ public class Kosketus {
 		
 		RobotParts.getTouchSensor().fetchSample(sample, 0);
 		
-		if (RobotParts.getTouchSensor().sampleSize() == 1) {
+		if (sample[0] == 1) {
 			RobotParts.getLargeMotor1().rotate(-350);
 			RobotParts.getLargeMotor2().rotate(-350);
 			RobotParts.getLargeMotor1().stop();

@@ -30,20 +30,18 @@ public void playMusic() {
 	 * Defines audio files
 	 */
 }
-//public void playMusic(String kappale){
-//	final File soundFile = new File(kappale);
-//	Thread t = Thread.currentThread();
-//	t.notifyAll();
-//	int test= Sound.playSample(soundFile, 100);
-//	LCD.clear();
-//	LCD.drawString(String.valueOf(test), 0, 0);
-//	Delay.msDelay(500);
-//	Thread t = Thread.currentThread();
-//	t.notifyAll();
-//	/**
-//	 * plays chosen sound file
-//	 */
-//}
+
+public void playMusic(String kappale){
+	final File soundFile = new File(kappale);
+	int test= Sound.playSample(soundFile, 100);
+	LCD.clear();
+	LCD.drawString(String.valueOf(test), 0, 0);
+	Delay.msDelay(500);
+	/**
+	 * plays chosen sound file
+	 */
+}
+
 public void stopMusic() {
 	Sound.pause(0);
 	/**

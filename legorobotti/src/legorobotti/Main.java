@@ -15,12 +15,17 @@ public class Main extends Thread {
 	private Liike liike = new Liike();
 	private AudioThread audio = new AudioThread();
 	private Kosketus kosketus = new Kosketus();
+	private Laskuri laskuri = new Laskuri();
 	public Main() {
 				
 	}
 	public void run() {
 		Sound.setVolume(Sounds.VOL_MAX);
 		audio.start();
+		LCD.drawString("L0RD V4D3R", 0, 1);
+		LCD.drawString("Nopeus: "+laskuri.returnVelocity(), 0, 2);
+		LCD.drawString("Kiihtyvyys: "+laskuri.returnAcceleration(), 0, 3);
+		LCD.drawString("RPM: "+laskuri.returnTacho(), 0, 4);
 		while (Button.ESCAPE.isUp()) {
 			kosketus.touch();
 			final int remoteCommand = irsensori.getRemoteCommand(2);
@@ -117,7 +122,6 @@ public class Main extends Thread {
 	public static void main(String[] args) {
 		Main checkerThread = new Main();
 		checkerThread.start();
-		LCD.drawString("Lord VadeG", 0, 1);
 		
 	}
 

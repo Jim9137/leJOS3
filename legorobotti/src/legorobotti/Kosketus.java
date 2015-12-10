@@ -1,5 +1,6 @@
 package legorobotti;
 import lejos.hardware.*;
+import lejos.utility.Delay;
 
 /**
  * T‰ss‰ classissa m‰‰ritell‰‰n mit‰ kosketussensorin metodi
@@ -10,7 +11,7 @@ import lejos.hardware.*;
 
 
 public class Kosketus {
-	
+	private Liike liike = new Liike();
 	
 	float[] sample = new float[RobotParts.getTouchSensor().sampleSize()];
 	
@@ -20,13 +21,10 @@ public class Kosketus {
 		RobotParts.getTouchSensor().fetchSample(sample, 0);
 		
 		if (sample[0] == 1) {
-			RobotParts.getLargeMotor1().rotate(-350);
-			RobotParts.getLargeMotor2().rotate(-350);
-			RobotParts.getLargeMotor1().stop();
-			RobotParts.getLargeMotor2().stop();
-		} else {
-			
-		}
+			liike.taakse();
+			Delay.msDelay(300);
+			liike.seis();
+		} 
 	}
 }
 

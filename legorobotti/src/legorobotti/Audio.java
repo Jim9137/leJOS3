@@ -48,6 +48,18 @@ public void stopMusic() {
 	 * Pauses sound file
 	 */
 } 
+
+
+/**
+ * 
+ * checks if sound is playing
+ */
+public boolean isPlaying() {
+	if(Sound.getTime() != 0)
+		return true;
+	else
+		return false;
+}
 public void playClip(String klippi) {
 	final File soundFile = new File(klippi);
 	Sound.playSample(soundFile, 100);

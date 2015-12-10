@@ -87,6 +87,8 @@ public class Main extends Thread {
 			 * Suorittaa Lyöntiliikkeen
 			 */
 			case 4:
+				audio.stopSound();
+				AudioThread.giveCommand(1);
 				Button.LEDPattern(5);
 				lyonti.alhaalla();
 //				audio.playMusic(Audio.SABERSW);

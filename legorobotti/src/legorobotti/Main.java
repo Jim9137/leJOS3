@@ -16,9 +16,7 @@ public class Main extends Thread {
 	private AudioThread audio = new AudioThread();
 	private Kosketus kosketus = new Kosketus();
 	private Laskuri laskuri = new Laskuri();
-	public Main() {
-				
-	}
+
 	public void run() {
 		Sound.setVolume(Sounds.VOL_MAX);
 		audio.start();

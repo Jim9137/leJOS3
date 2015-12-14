@@ -36,7 +36,9 @@ public class Lyonti implements Liikkeet {
 		}
 
 	}
-	
+	/**
+	 * Sulkee moottorin
+	 */
 	public void close() {
 		RobotParts.closeDevice(RobotParts.getLightSaber());
 	}

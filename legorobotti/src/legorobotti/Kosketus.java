@@ -27,5 +27,9 @@ public class Kosketus {
 			liike.seis();
 		} 
 	}
+	
+	public void close() {
+		RobotParts.getTouchSensor().close();
+	}
 }
 

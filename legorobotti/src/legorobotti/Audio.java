@@ -21,55 +21,51 @@ public class Audio {
 	public final static String SABERSW = "Lightsaber_swing.wav";
 	public final static String SABERWD = "Lightsaber_withdraw.wav";
 	public final static String MARCH = "The Imperial March.wav";
-	
-public void playMusic() {
-	final File soundFile = new File("The Imperial March.wav");
-	Sound.playSample(soundFile);
-	Delay.msDelay(500);
+
+	public void playMusic() {
+		final File soundFile = new File("The Imperial March.wav");
+		Sound.playSample(soundFile);
+		Delay.msDelay(500);
+		/**
+		 * Defines audio files
+		 */
+	}
+
+	public void playMusic(String kappale) {
+		final File soundFile = new File(kappale);
+		int test = Sound.playSample(soundFile, 100);
+		LCD.clear();
+		LCD.drawString(String.valueOf(test), 0, 0);
+		Delay.msDelay(500);
+		/**
+		 * plays chosen sound file
+		 */
+	}
+
+	public void stopMusic() {
+		Sound.pause(0);
+		/**
+		 * Pauses sound file
+		 */
+	}
+
 	/**
-	 * Defines audio files
+	 * 
+	 * checks if sound is playing
 	 */
-}
+	public boolean isPlaying() {
+		if (Sound.getTime() != 0)
+			return true;
+		else
+			return false;
+	}
 
-public void playMusic(String kappale){
-	final File soundFile = new File(kappale);
-	int test= Sound.playSample(soundFile, 100);
-	LCD.clear();
-	LCD.drawString(String.valueOf(test), 0, 0);
-	Delay.msDelay(500);
-	/**
-	 * plays chosen sound file
-	 */
+	public void playClip(String klippi) {
+		final File soundFile = new File(klippi);
+		Sound.playSample(soundFile, 100);
+		Delay.msDelay(500);
+		/**
+		 * Plays clip
+		 */
+	}
 }
-
-public void stopMusic() {
-	Sound.pause(0);
-	/**
-	 * Pauses sound file
-	 */
-} 
-
-
-/**
- * 
- * checks if sound is playing
- */
-public boolean isPlaying() {
-	if(Sound.getTime() != 0)
-		return true;
-	else
-		return false;
-}
-public void playClip(String klippi) {
-	final File soundFile = new File(klippi);
-	Sound.playSample(soundFile, 100);
-	Delay.msDelay(500);
-	/**
-	 * Plays clip
-	 */
-}
-}
-//public void loadClip(klippi)?? {
-//	
-//}
-

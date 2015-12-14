@@ -22,11 +22,11 @@ public class Main extends Thread {
 	public void run() {
 		Sound.setVolume(Sounds.VOL_MAX);
 		audio.start();
-		LCD.drawString("L0RD V4D3R", 0, 1);
-		LCD.drawString("Nopeus: "+laskuri.returnVelocity(), 0, 2);
-		LCD.drawString("Kiihtyvyys: "+laskuri.returnAcceleration(), 0, 3);
-		LCD.drawString("RPM: "+laskuri.returnTacho(), 0, 4);
 		while (Button.ESCAPE.isUp()) {
+
+			LCD.drawString("L0RD V4D3R", 0, 1);
+			LCD.drawString("Matka: "+laskuri.returnTacho()/10, 0, 4); // palauttaa saadut 10cm ja muuttaa ne metreiksi
+			
 			kosketus.touch();
 			final int remoteCommand = irsensori.getRemoteCommand(2);
 			switch (remoteCommand) {
@@ -88,17 +88,13 @@ public class Main extends Thread {
 			case 2:
 				vemputin.aloitajalopetavemputus();
 				Button.LEDPattern(8);
-//				audio.playMusic(Audio.SABERD);
 				break;
 			/*
 			 * Suorittaa Lyöntiliikkeen
 			 */
 			case 4:
-				audio.stopSound();
-				AudioThread.giveCommand(1);
 				Button.LEDPattern(5);
 				lyonti.alhaalla();
-//				audio.playMusic(Audio.SABERSW);
 				break;
 			/*
 			 * Pysäyttää kaikki moottorit ja sammuttaa ledit.
@@ -107,12 +103,13 @@ public class Main extends Thread {
 				liike.seis();
 				vemputin.lopetavemputus();
 				Button.LEDPattern(0);
-//				audio.playMusic(Audio.MARCH);
-				break;
 
 			}
 
 		}
+		// Pysäytä musiikki
+		audio.stopMusic();
+		// Sulje moottorit ja sensorit
 		liike.close();
 		vemputin.close();
 		lyonti.close();

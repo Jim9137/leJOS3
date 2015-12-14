@@ -12,47 +12,31 @@ import lejos.hardware.Button;
 
 public class AudioThread extends Thread {
 
-	private static int SABER_SWING = 2;
-	private static int IMPERIAL_MARCH = 0;
-
 	/**
-	 * @param command
-	 *            Komennot joilla voi vaihtaa säikeen toiminnallisuutta
 	 * @param audio
 	 *            Audio-olio.
 	 */
-	private static int command = 0;
 	private Audio audio = new Audio();
 
 	/**
-	 * Antaa komennon säikeelle joka vaihtaa run() luokan toiminnallisuutta
-	 * 
-	 * @param c
-	 *            komento
+	 * Keskeyttää säikeen toiston, eli pysäyttää musiikin. Tämä aiheuttaa run()
+	 * lopettamisen.
+	 * Mahdollisia turvallisuus ongelmia.
 	 */
-	public static void giveCommand(int c) {
-		AudioThread.command = c;
-	}
-
-	public void stopSound() {
-		audio.stopMusic();
+	public void stopMusic() {
+		interrupt();
 	}
 
 	/**
-	 * Soittaa musiikkia riippuen komennosta ja soiko musiikki
+	 * Soittaa musiikkia kun olio on aloitettu start() musiikilla.
 	 */
 	public void run() {
-		while (Button.ESCAPE.isUp()) {
-			switch (AudioThread.command) {
-			case 0:
-				if (!audio.isPlaying()) {
-					audio.playMusic();
-				}
-			break;
-			case 2:
-				if (audio.isPlaying())
-					audio.stopMusic();
-				audio.playClip(Audio.SABERSW);
+		// Pyöritä niin kauan kunnes säie on keskeytetty stopMusic(), sen jälkeen keskeytä looppi.
+		while (!Thread.currentThread().isInterrupted()) {
+			try { // ...
+				audio.playMusic();
+			} catch (Exception consumed) {
+				break;
 			}
 		}
 

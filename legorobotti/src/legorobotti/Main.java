@@ -110,6 +110,7 @@ public class Main extends Thread {
 		// Pysäytä musiikki
 		audio.stopMusic();
 		// Sulje moottorit ja sensorit
+		kosketus.close();
 		liike.close();
 		vemputin.close();
 		lyonti.close();

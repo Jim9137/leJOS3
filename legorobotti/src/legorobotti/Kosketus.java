@@ -12,10 +12,15 @@ import lejos.utility.Delay;
 
 
 public class Kosketus {
+	
 	private Liike liike = new Liike();
 	
 	float[] sample = new float[RobotParts.getTouchSensor().sampleSize()];
 	
+	/**
+	 * touch metodi, kun sample on 1, robotti liikkuu taaksepäin 300ms
+	 * jonka jälkeen pysähtyy ja on valmis jatkamaan
+	 */
 	
 	public void touch() {
 		

@@ -1,7 +1,7 @@
 package legorobotti;
 
 /** Luokka luo metodit vemputtimelle
- *Luokka perii moottori RobotParts luokasta joten niitä ei tarvitse luoda erikseen.
+ * Luokka perii moottori RobotParts luokasta joten niitä ei tarvitse luoda erikseen.
  * 
  * @author Vade
  *
@@ -50,6 +50,10 @@ public class Vemputin implements Liikkeet {
 			lopetavemputus();
 		}
 	}
+	/**
+	 * sulkee moottorin
+	 * @author Henri
+	 */
 	
 	public void close() {
 		RobotParts.closeDevice(RobotParts.getDualBlades());

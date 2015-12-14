@@ -33,6 +33,10 @@ public class Kosketus {
 		} 
 	}
 	
+	/**
+	 * Sulkee moottorin
+	 */
+	
 	public void close() {
 		RobotParts.getTouchSensor().close();
 	}

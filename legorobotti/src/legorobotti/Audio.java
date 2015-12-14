@@ -6,7 +6,7 @@ import lejos.hardware.lcd.LCD;
 import lejos.utility.Delay;
 
 /**
- * Äänentoisto liikkeiden aikana.
+ * Äänentoisto liikkeen aikana.
  * 
  * @author hemmi_000
  *

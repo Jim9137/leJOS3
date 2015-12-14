@@ -11,9 +11,17 @@ import lejos.hardware.motor.EV3LargeRegulatedMotor;
 
 public class Liike implements Liikkeet {
 	
+	/**
+	 * M‰‰ritell‰‰n k‰ytett‰v‰t moottorit
+	 */
+	
 	private static EV3LargeRegulatedMotor oikeaMoottori = RobotParts.getLargeMotor1();
 	private static EV3LargeRegulatedMotor vasenMoottori = RobotParts.getLargeMotor2();
 	
+	/**
+	 * M‰‰ritell‰‰n robotin liikkuminen. Ensin asetetaan nopeus, jonka j‰lkeen suunta.
+	 * 
+	 */
 	
 	public void eteen() {
 		oikeaMoottori.setSpeed(740);

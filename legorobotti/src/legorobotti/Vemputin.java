@@ -39,6 +39,7 @@ public class Vemputin implements Liikkeet {
 	
 	/**
 	 * Metodi aloittaa ja lopettaa vemputuksen
+	 * Pyörittää moottoria eteenpäin, kunnes metodia kutsutaan uudelleen jolloin moottori pysäytetään
 	 * @author Henri
 	 */
 	

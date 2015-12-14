@@ -13,6 +13,7 @@ import lejos.utility.Delay;
  */
 
 public class Audio {
+	
 	public final static String NOLLA = "0.wav";
 	public final static String YKSI = "1.wav";
 	public final static String KAKSI = "2.wav";

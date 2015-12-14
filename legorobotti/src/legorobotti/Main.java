@@ -7,10 +7,15 @@ import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
 
+/**
+ * Luokka josta kaikki lähtee.
+ * @author Vade
+ * @version 1.0.0
+ */
+
 public class Main extends Thread {
 	private EV3IRSensor  irsensori = new EV3IRSensor(SensorPort.S1);
 	private Vemputin vemputin = new Vemputin();
-	//private Laskuri laskuri = new Laskuri();
 	private Lyonti lyonti = new Lyonti();
 	private Liike liike = new Liike();
 	private AudioThread audio = new AudioThread();

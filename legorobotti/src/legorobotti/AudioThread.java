@@ -13,7 +13,8 @@ import lejos.hardware.Button;
 public class AudioThread extends Thread {
 
 	/**
-	 * @param audio Audio-olio.
+	 * @param audio
+	 *            Audio-olio.
 	 */
 	private Audio audio = new Audio();
 
@@ -24,5 +25,20 @@ public class AudioThread extends Thread {
 	 */
 	public void stopMusic() {
 		interrupt();
+	}
+
+	/**
+	 * Soittaa musiikkia kun olio on aloitettu start() musiikilla.
+	 */
+	public void run() {
+		// Pyöritä niin kauan kunnes säie on keskeytetty stopMusic(), sen jälkeen keskeytä looppi.
+		while (!Thread.currentThread().isInterrupted()) {
+			try { // ...
+				audio.playMusic();
+			} catch (Exception consumed) {
+				break;
+			}
+		}
+
 	}
 }

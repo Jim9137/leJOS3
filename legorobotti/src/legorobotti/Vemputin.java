@@ -1,7 +1,7 @@
 package legorobotti;
 
 /** Luokka luo metodit vemputtimelle
- *Luokka hakee moottorit RobotParts luokasta joten niitä ei tarvitse luoda erikseen.
+ *  Luokka hakee moottorit RobotParts luokasta joten niitä ei tarvitse luoda erikseen.
  * 
  * @author Vade
  *

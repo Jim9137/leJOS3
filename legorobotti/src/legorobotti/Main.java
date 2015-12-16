@@ -8,7 +8,8 @@ import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
 
 /**
- * Luokka josta kaikki lähtee.
+ * Luokka jossa käynnistetään ja kootaan yhteen kaikki toiminnallisuudet
+ * jotka on luotu omissa luokissaan.
  * @author Vade
  * @version 1.0.0
  */
@@ -21,14 +22,23 @@ public class Main extends Thread {
 	private AudioThread audio = new AudioThread();
 	private Kosketus kosketus = new Kosketus();
 	private Laskuri laskuri = new Laskuri();
-
+/**
+ * Javan metodi jota aletaan ajaa omassa thredissä samaan
+ * aikaan main metodin kanssa. Metodi käynnistetään ensin
+ * main metodissa. Metodi mahdollistaa robotin kauko-
+ * ohjauksen kuuntelemalla IR-sensorilta saatuja arvoja.
+ * Metodi myös piirtää LDC-näytölle kuljetun matkan.
+ * Metodi myös käynnistää musiikin toiston Audio luokan 
+ * metodilla audio.start, sekä aktivoi kosketus sensorin.
+ */
 	public void run() {
 		Sound.setVolume(Sounds.VOL_MAX);
 		audio.start();
 		while (Button.ESCAPE.isUp()) {
 
 			LCD.drawString("L0RD V4D3R", 0, 1);
-			LCD.drawString("Matka: "+laskuri.returnTacho()/10, 0, 4); // palauttaa saadut 10cm ja muuttaa ne metreiksi
+			LCD.drawString("Matka: "+laskuri.returnTacho()/10, 0, 4); 
+			// palauttaa saadut 10cm ja muuttaa ne metreiksi
 			
 			kosketus.touch();
 			final int remoteCommand = irsensori.getRemoteCommand(2);
@@ -119,7 +129,12 @@ public class Main extends Thread {
 		lyonti.close();
 		irsensori.close();
 	}
-
+	/**
+	 * Main metodi joka käynnistää run metodin. 
+	 * Ohjelma jaktaa suorittamista kunnes run metodi
+	 * on suoritettu loppuun joten se ei sulkeudu kun 
+	 * main metodi on käyty loppuun.
+	 */
 	public static void main(String[] args) {
 		Main checkerThread = new Main();
 		checkerThread.start();

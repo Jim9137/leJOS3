@@ -7,29 +7,29 @@ package legorobotti;
  *
  */
 public class Vemputin implements Liikkeet {
-	/*
+	/**
 	 *Metodi aloittaa vemputuksen maksimi nopeudella
 	 */
 	public void vemputalujaa() {
 		RobotParts.getDualBlades().setSpeed(740);
 		RobotParts.getDualBlades().forward();
 	}
-	/*
+	/**
 	 * Metodi aloittaa vemputuksen hiljaisella nopeudella
 	 */
 	public void vemputavahasen() {
 		RobotParts.getDualBlades().setSpeed(360);
 		RobotParts.getDualBlades().forward();
 	}
-	/*
+	/**
 	 * Metodi lopettaa vemputuksen.
 	 */
 	public void lopetavemputus() {
 		RobotParts.getDualBlades().setSpeed(0);
 		RobotParts.getDualBlades().stop(true);
 	}
-	/*
-	 * Metodi aloittaa vemputuksen tietyllä nopeudella.
+	/**
+	 * Metodi aloittaa vemputuksen parametrina annetulla nopeudella.
 	 */
 	public void vemputa(int nopeus) {
 		RobotParts.getDualBlades().setSpeed(nopeus);
@@ -39,7 +39,7 @@ public class Vemputin implements Liikkeet {
 	/**
 	 * Metodi aloittaa ja lopettaa vemputuksen
 	 * Pyörittää moottoria eteenpäin, kunnes metodia kutsutaan uudelleen jolloin moottori pysäytetään
-	 * @author Henri
+	 * @author Vade
 	 */
 	
 	public void aloitajalopetavemputus() {
@@ -51,7 +51,7 @@ public class Vemputin implements Liikkeet {
 	}
 	/**
 	 * sulkee moottorin
-	 * @author Henri
+	 * @author Vade
 	 */
 	
 	public void close() {

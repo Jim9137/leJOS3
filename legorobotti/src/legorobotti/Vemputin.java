@@ -1,13 +1,12 @@
 package legorobotti;
 
 /** Luokka luo metodit vemputtimelle
- * Luokka perii moottori RobotParts luokasta joten niitä ei tarvitse luoda erikseen.
+ *  Luokka hakee moottorit RobotParts luokasta joten niitä ei tarvitse luoda erikseen.
  * 
  * @author Vade
  *
  */
 public class Vemputin implements Liikkeet {
-	
 	/*
 	 *Metodi aloittaa vemputuksen maksimi nopeudella
 	 */

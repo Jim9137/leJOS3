@@ -1,7 +1,5 @@
 package legorobotti;
 
-import lejos.hardware.Button;
-
 /**
  * Audio-s‰ie luokka jonka osana on audio-olio. Tarkoituksena toteuttaa
  * erillinen s‰ie ‰‰nille.

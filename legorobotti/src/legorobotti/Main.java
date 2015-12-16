@@ -116,9 +116,7 @@ public class Main extends Thread {
 				liike.seis();
 				vemputin.lopetavemputus();
 				Button.LEDPattern(0);
-
 			}
-
 		}
 		// Pysäytä musiikki
 		audio.stopMusic();
